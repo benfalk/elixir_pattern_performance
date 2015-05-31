@@ -20,13 +20,10 @@ defmodule PatternPerformance do
             t
         end
       %{performance |
-        slowest_time: slowest_time(time, performance.slowest_time),
+        slowest_time: max(time, performance.slowest_time),
         words_tried: performance.words_tried + 1,
         total_time: performance.total_time + time
       }
     end)
   end
-
-  defp slowest_time(time, slowest_time) when time > slowest_time, do: time
-  defp slowest_time(_, slowest_time), do: slowest_time
 end
